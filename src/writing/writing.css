@@ -1,7 +1,7 @@
 body{
-    margin: 20px;
+    margin: 0px;
     font-family: 'Lato', sans-serif;
-    background-color: grey;
+    background-color: #eeeeee;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,7 +11,35 @@ body{
     padding: 15px;
     margin-top: 50px;
     border: 0px;
+    background-color: #ffffff;
     font-family: 'Lato', sans-serif;
-    box-shadow: 5px 5px 15px 5px #000000;
+    box-shadow: 5px 5px 15px 5px #c7c1c1;
     outline: none;
+}
+
+#navigation{
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: #eeeeee;
+    box-shadow: 5px 5px 15px 5px #c7c1c1;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+
+}
+
+#navigation span{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+#navigation input{
+    outline: none;
+    border: 0px;
+    font-family: 'Lato', sans-serif;
+
 }
