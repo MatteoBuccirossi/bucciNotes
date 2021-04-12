@@ -1,55 +1,54 @@
 let pages = document.querySelectorAll('textarea');
+let title = document.querySelector('input');
+console.log(title);
+let docTitle = 'nuts';
+let docValue = '';
 let firstPage = pages[0];
+title.value = docTitle;
+
+const delay = ms => new Promise(res => setTimeout(res, ms));
+
+title.onkeydown = updateTitle;
+
+
 function initTextAreas(){
     pages = document.querySelectorAll('textarea');
-    let height = window.innerHeight;
     let width = window.innerWidth;
     pages.forEach((pag)=>{
-        pag.setAttribute("style", `width: ${(width/2) - 50}px; height: ${height - 30}px;`);
+        let prevHeight = pag.offsetHeight;
+        pag.style.width = `${(width/2) - 50}px`;
         pag.onkeydown = paginationEffect;
 
     });
 }
 
 function initTextAreaValue(value){
+    let height = window.innerHeight;
     firstPage.value = value;
+    firstPage.style.height = `${height + 10}px`;
 }
 
 
 
 
-function paginationEffect(event){
-    let ourPages = document.querySelectorAll('textarea');
-    let currentPag = 0;
-    for(let pag in ourPages){
-        if(ourPages[pag] == this) currentPag = pag;
-    }
-    let key = event.keyCode || event.charCode;
 
-    //handling overflow
+async function paginationEffect(event){
     if(this.clientHeight < this.scrollHeight){
-        if(key != 8 && key != 46){
-            if(ourPages[parseInt(currentPag) +1] == undefined){
-                console.log(currentPag, currentPag +1);
-                let newPage = document.createElement('textarea');
-                newPage.setAttribute("style", `width: ${this.clientWidth}px; height: ${this.clientHeight}px;`);
-                newPage.classList.add('page');
-                document.body.appendChild(newPage);
-                newPage.focus();
-            }else{
-                ourPages[parseInt(currentPag) + 1 ].focus();
-            }
-        }
+        let prevHeight = this.clientHeight;
+        this.style.height = `${prevHeight + 40}px`;        
     }
-    //handling backspace from appended textarea
-    if((key == 8 || key == 46) && this.value == ''){
-        if(parseInt(currentPag) != 0){
-            ourPages[parseInt(currentPag)].remove();
-            ourPages[parseInt(currentPag)-1].focus();
-        }
-    }
+
+    await delay(200);
+    docValue =  this.value;
+    console.log(docValue);
+}
+
+async function updateTitle(e){
+    await delay(200);
+    docTitle =  this.value;
+    console.log(docTitle);
 }
 
 initTextAreas();
-initTextAreaValue('there must be more to life than stereotypes!');
+initTextAreaValue(docValue);
 setInterval(function() { initTextAreas(); }, 200);

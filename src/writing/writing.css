@@ -15,6 +15,7 @@ body{
     font-family: 'Lato', sans-serif;
     box-shadow: 5px 5px 15px 5px #c7c1c1;
     outline: none;
+    resize: none;
 }
 
 #navigation{
@@ -39,6 +40,8 @@ body{
 
 #navigation input{
     outline: none;
+    height: 40px;
+    margin-left: 15px;
     border: 0px;
     font-family: 'Lato', sans-serif;
 
