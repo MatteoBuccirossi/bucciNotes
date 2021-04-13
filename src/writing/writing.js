@@ -1,5 +1,7 @@
 let pages = document.querySelectorAll('textarea');
 let title = document.querySelector('input');
+let back = document.querySelector('#back');
+
 console.log(title);
 let docTitle = 'nuts';
 let docValue = '';
@@ -9,6 +11,10 @@ title.value = docTitle;
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
 title.onkeydown = updateTitle;
+
+back.onclick = function(e){
+    localStorage.removeItem('dir');
+}
 
 
 function initTextAreas(){
@@ -20,6 +26,8 @@ function initTextAreas(){
         pag.onkeydown = paginationEffect;
 
     });
+    back.setAttribute('style', `margin-right: ${width - 150}px;`);
+
 }
 
 function initTextAreaValue(value){

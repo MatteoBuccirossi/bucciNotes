@@ -2,21 +2,29 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
+const dir = localStorage.getItem('dir');
+
+
 let target = document.querySelector('.directories');
 let btn1 =  document.querySelector('.more1');
 let btn2 =  document.querySelector('.more');
 let covered =  document.querySelector('.covered');
 let input = document.querySelector('.under');
+let back = document.querySelector('#back');
+
+back.onclick = function(e){
+    localStorage.removeItem('dir');
+}
 
 function getSubjectRepos(){
-    let subjPath = path.join(os.homedir(), 'appunti');
+    let subjPath = path.join(os.homedir(), 'appunti', dir);
     if(!fs.existsSync(subjPath)){
-        fs.mkdir(path.join(os.homedir(), 'appunti'), (e)=>{
+        fs.mkdir(path.join(os.homedir(), 'appunti',dir), (e)=>{
             if(e){
                 throw new Error(e);
             }
         });
-        console.log('created');
+        console.log('created directory at ' + subjPath);
     }
 
     let repos = fs.readdirSync(subjPath, { withFileTypes: true }).filter(dirent => dirent.isDirectory());
@@ -24,6 +32,8 @@ function getSubjectRepos(){
 }
 
 function renderRepos(repos){
+    let width = window.innerWidth;
+    back.setAttribute('style', `margin-right: ${width - 150}px;`);
     let subjs = [];
     for(let i = 0; i < target.children.length; i++){
         if(target.children[i].nodeName == 'DIV'){
@@ -37,21 +47,17 @@ function renderRepos(repos){
                 let fig = document.createElement('div');
                 let img = document.createElement('img');
                 let caption = document.createElement('p');
-                img.src = 'repo2.png';
+                img.src = 'file.png';
                 caption.innerText = repo.name;
                 fig.appendChild(img);
                 fig.appendChild(caption);
-                fig.onclick = function(e){
-                    localStorage.setItem('dir', repo.name);
-                    window.location.replace(`${path.join(__dirname, 'subject', 'subject.html')}`);
-                }
                 target.appendChild(fig);
             });
         }
     }else{
         target.innerHTML = '';
         let p = document.createElement('p');
-        p.innerText = "You don't have any subjects yet! Add some.";
+        p.innerText = "You don't have any notes yet! Add some.";
         target.appendChild(p);
     }
 }
@@ -69,7 +75,7 @@ btn1.onclick = function(e){
 btn2.onclick = function(e){
     let repoName = input.value.trim();
     if(repoName != '' && repoName != ' '){
-        fs.mkdir(path.join(os.homedir(), 'appunti', repoName), (e)=>{
+        fs.mkdir(path.join(os.homedir(), 'appunti', dir, repoName), (e)=>{
             if(e){
                 throw new Error(e);
             }
