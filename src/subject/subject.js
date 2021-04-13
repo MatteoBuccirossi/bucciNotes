@@ -1,7 +1,7 @@
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
-
+const { Document, Packer, Paragraph, TextRun } =  require("docx");
 const dir = localStorage.getItem('dir');
 
 
@@ -11,10 +11,13 @@ let btn2 =  document.querySelector('.more');
 let covered =  document.querySelector('.covered');
 let input = document.querySelector('.under');
 let back = document.querySelector('#back');
+let subject = document.querySelector('#subject');
 
 back.onclick = function(e){
     localStorage.removeItem('dir');
 }
+
+subject.innerText = dir;
 
 function getSubjectRepos(){
     let subjPath = path.join(os.homedir(), 'appunti', dir);
@@ -27,13 +30,14 @@ function getSubjectRepos(){
         console.log('created directory at ' + subjPath);
     }
 
-    let repos = fs.readdirSync(subjPath, { withFileTypes: true }).filter(dirent => dirent.isDirectory());
+    let repos = fs.readdirSync(subjPath, { withFileTypes: true }).filter(dirent => !dirent.isDirectory());
     return repos;
 }
 
 function renderRepos(repos){
     let width = window.innerWidth;
     back.setAttribute('style', `margin-right: ${width - 150}px;`);
+    subject.setAttribute('style', `margin-right: ${width - 260}px;`);
     let subjs = [];
     for(let i = 0; i < target.children.length; i++){
         if(target.children[i].nodeName == 'DIV'){
@@ -44,13 +48,18 @@ function renderRepos(repos){
         if(repos.length !=  subjs.length){
             target.innerHTML = '';
             repos.forEach((repo)=>{
+                let actualname = repo.name.split('.')[0];
                 let fig = document.createElement('div');
                 let img = document.createElement('img');
                 let caption = document.createElement('p');
                 img.src = 'file.png';
-                caption.innerText = repo.name;
+                caption.innerText = actualname;
                 fig.appendChild(img);
                 fig.appendChild(caption);
+                fig.onclick = function(e){
+                    localStorage.setItem('file', repo.name);
+                    window.location.replace(`../../src/writing/writing.html`);
+                }
                 target.appendChild(fig);
             });
         }
@@ -63,7 +72,6 @@ function renderRepos(repos){
 }
 
 btn1.onclick = function(e){
-    console.log('click');
     if(covered.style.display == 'block'){
         covered.style.display = 'none'; 
     }else{
@@ -72,17 +80,20 @@ btn1.onclick = function(e){
     btn1.style.margnTop = '1rem';
 }
 
-btn2.onclick = function(e){
+
+
+btn2.onclick = async function(e){
     let repoName = input.value.trim();
     if(repoName != '' && repoName != ' '){
-        fs.mkdir(path.join(os.homedir(), 'appunti', dir, repoName), (e)=>{
-            if(e){
-                throw new Error(e);
-            }
-        });
+        await saveDocument(repoName, '');
     }
     input.value = '';
     covered.style.display = 'none';
+}
+
+async function saveDocument(title, text){
+    let subjPath = path.join(os.homedir(), 'appunti', dir, `${title}.txt`);
+    fs.writeFileSync(subjPath, text);
 }
 
 

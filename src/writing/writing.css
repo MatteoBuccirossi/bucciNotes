@@ -5,6 +5,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    scrollbar-width: 0px;
 }
 
 #back{
@@ -14,6 +15,15 @@ body{
     margin-top: 8px;
     text-decoration: none;
     
+}
+
+#save{
+    color: white;
+    font-size: 15pt;
+    position: absolute;
+    margin-top: 20px;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .page{

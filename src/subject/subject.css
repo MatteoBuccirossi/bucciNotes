@@ -8,6 +8,8 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
+    scrollbar-width: 0px;
+
   }
 
   #back{
@@ -16,8 +18,16 @@ body {
       position: absolute;
       margin-top: 3px;
       text-decoration: none;
-      
   }
+
+  #subject{
+    color: blue;
+    font-size: 15pt;
+    position: absolute;
+    margin-top: 25px;
+    text-decoration: none;
+}
+
   
   
   .add{
