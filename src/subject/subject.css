@@ -3,7 +3,7 @@ body {
   margin: auto;
   max-width: 38rem;
   padding: 2rem;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: white;
   display: flex;
   align-items: center;
@@ -110,7 +110,7 @@ body {
 .under{
   height: 40px;
   border-radius: 15px;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Roboto', sans-serif;
   outline: none;
   border: 3px solid rgb(20, 19, 19);;
   padding: 5px;

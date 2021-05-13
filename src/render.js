@@ -2,11 +2,13 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
+
 let target = document.querySelector('.directories');
 let btn1 =  document.querySelector('.more1');
 let btn2 =  document.querySelector('.more');
 let covered =  document.querySelector('.covered');
 let input = document.querySelector('.under');
+
 
 function getSubjectRepos(){
     let subjPath = path.join(os.homedir(), 'appunti');
@@ -37,7 +39,7 @@ function renderRepos(repos){
                 let fig = document.createElement('div');
                 let img = document.createElement('img');
                 let caption = document.createElement('p');
-                img.src = 'repo2.png';
+                img.src = 'folder.svg';
                 caption.innerText = repo.name;
                 fig.appendChild(img);
                 fig.appendChild(caption);

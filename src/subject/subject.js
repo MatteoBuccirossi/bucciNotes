@@ -52,7 +52,7 @@ function renderRepos(repos){
                 let fig = document.createElement('div');
                 let img = document.createElement('img');
                 let caption = document.createElement('p');
-                img.src = 'file.png';
+                img.src = 'file.svg';
                 caption.innerText = actualname;
                 fig.appendChild(img);
                 fig.appendChild(caption);
