@@ -74,8 +74,10 @@ function renderRepos(repos){
 btn1.onclick = function(e){
     if(covered.style.display == 'block'){
         covered.style.display = 'none'; 
+        btn1.innerHTML = '+';
     }else{
         covered.style.display = 'block';
+        btn1.innerHTML = '-';
     }
     btn1.style.margnTop = '1rem';
 }

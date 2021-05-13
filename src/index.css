@@ -4,17 +4,39 @@ body {
   max-width: 38rem;
   padding: 2rem;
   font-family: 'Lato', sans-serif;
-  color: rgb(87, 87, 87);
+  color: white;
   display: flex;
   align-items: center;
   flex-direction: column;
-  scrollbar-width: 0px;
+  background-color: #272424;
 
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: none; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: blue; 
+  border-radius: 10px;
+  height: 100px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(7, 7, 214); 
 }
 
 
 .add{
-  color: blue;
+  color: white;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -31,16 +53,16 @@ body {
   cursor: pointer;
   outline: none;
   color: #fff;
-  background-color: blue;
+  background-color: rgb(20, 19, 19);
   border: none;
   border-radius: 50%;
   box-shadow: 0 9px #999;
 }
 
-.add button:hover {background-color: rgb(5, 5, 202)}
+.add button:hover {background-color: black}
 
 .add button:active {
-  background-color: rgb(5, 5, 202);
+  background-color: black;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
@@ -57,16 +79,16 @@ body {
   cursor: pointer;
   outline: none;
   color: #fff;
-  background-color: blue;
+  background-color: rgb(20, 19, 19);
   border: none;
   border-radius: 50%;
   box-shadow: 0 5px #999;
 }
 
-.add div button:hover {background-color: rgb(5, 5, 202)}
+.add div button:hover {background-color: black}
 
 .add div button:active {
-  background-color: rgb(5, 5, 202);
+  background-color: black;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
@@ -76,7 +98,7 @@ body {
   border-radius: 15px;
   font-family: 'Lato', sans-serif;
   outline: none;
-  border: 3px solid blue;
+  border: 3px solid rgb(20, 19, 19);;
   padding: 5px;
 }
 

@@ -8,14 +8,17 @@ let pages = document.querySelectorAll('textarea');
 let title = document.querySelector('input');
 let back = document.querySelector('#back');
 let save = document.querySelector('#save');
+let check = document.querySelector('#saved');
 
 console.log(title);
 let docTitle = file.split('.')[0] || '';
 let docValue = fs.readFileSync(path.join(os.homedir(), 'appunti', dir, file), 'utf8') || '';
+let saved = fs.readFileSync(path.join(os.homedir(), 'appunti', dir, file), 'utf8') || '';
 
 save.onclick = function(e){
     let file = localStorage.getItem('file');
     let subjoPath = path.join(os.homedir(), 'appunti', dir, file);
+    saved = docValue;
     fs.writeFileSync(subjoPath, docValue);
 }
 
@@ -34,6 +37,11 @@ back.onclick = function(e){
 
 function initTextAreas(){
     pages = document.querySelectorAll('textarea');
+    let page = pages[0];
+    if(page.clientHeight < page.scrollHeight){
+            let prevHeight = page.clientHeight;
+            page.style.height = `${prevHeight + 40}px`;        
+    }
     let width = window.innerWidth;
     pages.forEach((pag)=>{
         let prevHeight = pag.offsetHeight;
@@ -41,9 +49,14 @@ function initTextAreas(){
         pag.onkeydown = paginationEffect;
 
     });
+    if(saved != docValue){
+        check.innerHTML = '.'; 
+    }else{
+        check.innerHTML = '';
+    }
     back.setAttribute('style', `margin-right: ${width - 150}px;`);
     save.setAttribute('style', `margin-right: ${width - 250}px;`);
-
+    check.setAttribute('style', `margin-right: ${width - 350}px;`);
 }
 
 function initTextAreaValue(value){

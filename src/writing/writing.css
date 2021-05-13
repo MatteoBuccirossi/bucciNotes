@@ -1,11 +1,33 @@
 body{
     margin: 0px;
     font-family: 'Lato', sans-serif;
-    background-color: #d3edff;
+    color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
-    scrollbar-width: 0px;
+    background-color: rgb(29, 29, 29);
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: none; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: blue; 
+  border-radius: 10px;
+  height: 100px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(7, 7, 214); 
 }
 
 #back{
@@ -26,27 +48,42 @@ body{
     cursor: pointer;
 }
 
+
+#saved{
+  color: white;
+  font-size: 15pt;
+  position: absolute;
+  margin-top: 20px;
+  text-decoration: none;
+}
+
 .page{
-    padding: 15px;
     margin-top: 50px;
     border: 0px;
     background-color: #ffffff;
     font-family: 'Lato', sans-serif;
-    box-shadow: 5px 5px 15px 5px #bfd3e0;
+    font-size: 11pt;
+    box-shadow: 5px 5px 15px 5px rgb(20, 19, 19);
     outline: none;
     resize: none;
+    padding-top: 70px;
+    padding-left: 50px;
+    padding-bottom: 10px;
+    padding-right: 50px;
 }
 
 #navigation{
     width: 100%;
     margin-bottom: 20px;
-    background-color: #2282ff;
-    box-shadow: 5px 5px 15px 5px #bfd3e0;
+    background-color: black;
+    box-shadow: 5px 5px 15px 5px rgb(20, 19, 19);
     color: #fff;
     height: 70px;
     display: flex;
     flex-direction: row;
-
+    position: -webkit-sticky;
+    position: sticky;
+    top: -1px;
 }
 
 #navigation span{

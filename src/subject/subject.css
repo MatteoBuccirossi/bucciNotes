@@ -1,19 +1,39 @@
 
 body {
-    margin: auto;
-    max-width: 38rem;
-    padding: 2rem;
-    font-family: 'Lato', sans-serif;
-    color: rgb(87, 87, 87);
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    scrollbar-width: 0px;
-
+  margin: auto;
+  max-width: 38rem;
+  padding: 2rem;
+  font-family: 'Lato', sans-serif;
+  color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #272424;
+}
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: none; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: WH; 
+    border-radius: 10px;
+    height: 100px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(7, 7, 214); 
   }
 
   #back{
-      color: blue;
+    color: #fff;
       font-size: 40pt;
       position: absolute;
       margin-top: 3px;
@@ -21,7 +41,6 @@ body {
   }
 
   #subject{
-    color: blue;
     font-size: 15pt;
     position: absolute;
     margin-top: 25px;
@@ -29,74 +48,73 @@ body {
 }
 
   
-  
-  .add{
-    color: blue;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
-  
-  .add button{
-    margin-top: 2rem;
-    margin-bottom: 7rem;
-    padding: 15px 25px;
-    height: 100px;
-    width: 100px;
-    font-size: 40pt;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    color: #fff;
-    background-color: blue;
-    border: none;
-    border-radius: 50%;
-    box-shadow: 0 9px #999;
-  }
-  
-  .add button:hover {background-color: rgb(5, 5, 202)}
-  
-  .add button:active {
-    background-color: rgb(5, 5, 202);
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-  }
-  
-  
-  .add div button{
-    margin-left: 5px;
-    text-align: center;
-    padding: 5px;
-    height: 40px;
-    width: 40px;
-    font-size: 15pt;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    color: #fff;
-    background-color: blue;
-    border: none;
-    border-radius: 50%;
-    box-shadow: 0 5px #999;
-  }
-  
-  .add div button:hover {background-color: rgb(5, 5, 202)}
-  
-  .add div button:active {
-    background-color: rgb(5, 5, 202);
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-  }
-  
-  .under{
-    height: 40px;
-    border-radius: 15px;
-    font-family: 'Lato', sans-serif;
-    outline: none;
-    border: 3px solid blue;
-    padding: 5px;
-  }
-  
+
+.add{
+  color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.add button{
+  margin-top: 2rem;
+  margin-bottom: 7rem;
+  padding: 15px 25px;
+  height: 100px;
+  width: 100px;
+  font-size: 40pt;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: rgb(20, 19, 19);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 9px #999;
+}
+
+.add button:hover {background-color: black}
+
+.add button:active {
+  background-color: black;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+
+.add div button{
+  margin-left: 5px;
+  text-align: center;
+  padding: 5px;
+  height: 40px;
+  width: 40px;
+  font-size: 15pt;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: rgb(20, 19, 19);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 5px #999;
+}
+
+.add div button:hover {background-color: black}
+
+.add div button:active {
+  background-color: black;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.under{
+  height: 40px;
+  border-radius: 15px;
+  font-family: 'Lato', sans-serif;
+  outline: none;
+  border: 3px solid rgb(20, 19, 19);;
+  padding: 5px;
+}
   .covered{
     display: none;
   }
